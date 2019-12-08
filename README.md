@@ -8,4 +8,4 @@ It features:
 - Modal
 - Details Page
 
-Also I used a tool called Netlify to view repo : https://movies-library.netlify.com/
+Also I used a tool called Netlify to view repo : https://movies-react-library.netlify.com/
