@@ -1,19 +1,18 @@
-import React from 'react';
-import Card from '../components/card'
-import Modal from '../components/modal'
+import React from "react";
+import Card from "../components/card";
+import Modal from "../components/modal";
 import { connect } from "react-redux";
-import { fetchMovies,openModal,closeModal } from "../actions/movieAction"
-import Header from '../components/header'
-import InfiniteScroll from 'react-infinite-scroller';
-import styled from 'styled-components';
+import { fetchMovies, openModal, closeModal } from "../actions/movieAction";
+import Header from "../components/header";
+import InfiniteScroll from "react-infinite-scroller";
+import styled from "styled-components";
 
 const ContentWrapper = styled.div`
-    padding: 0 75px;
-    margin: 50px 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-gap: 25px;
-    overflow: 'scroll';
+  padding: 0 50px;
+  margin: 50px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 25px;
 `;
 
 class Home extends React.Component {
@@ -21,8 +20,12 @@ class Home extends React.Component {
     return this.props.searchText ? false : true;
   }
   getItems() {
-    let filteredMovies = this.props.movies.filter( (movie) => {
-      return movie.original_title.toUpperCase().indexOf(this.props.searchText.toUpperCase()) !== -1;
+    let filteredMovies = this.props.movies.filter(movie => {
+      return (
+        movie.original_title
+          .toUpperCase()
+          .indexOf(this.props.searchText.toUpperCase()) !== -1
+      );
     });
     return filteredMovies;
   }
@@ -34,46 +37,52 @@ class Home extends React.Component {
           pageStart={0}
           loadMore={this.props.fetch}
           hasMore={this.getLoadMore()}
-          loader={<div className="loader" key={0}>Loading ...</div>}
+          loader={
+            <div className="loader" style={{ textAlign: "center" }} key={0}>
+              Loading ...
+            </div>
+          }
         >
-        <ContentWrapper>{ 
-          this.getItems().map((movie,i) => <Card 
-            id={movie.id} 
-            key={i} 
-            icon={movie.poster_path} 
-            title={movie.original_title} 
-            date={movie.release_date} 
-            desc={movie.overview}
-            action={this.props.openModal}/>
-          )
-        }</ContentWrapper>
+          <ContentWrapper>
+            {this.getItems().map((movie, i) => (
+              <Card
+                id={movie.id}
+                key={i}
+                icon={movie.poster_path}
+                title={movie.original_title}
+                date={movie.release_date}
+                desc={movie.overview}
+                action={this.props.openModal}
+              />
+            ))}
+          </ContentWrapper>
         </InfiniteScroll>
-        <Modal 
+        <Modal
           IsOpen={this.props.modalState}
-          icon={this.props.activeMovie.poster_path} 
-          title={this.props.activeMovie.original_title} 
-          date={this.props.activeMovie.release_date} 
+          icon={this.props.activeMovie.poster_path}
+          title={this.props.activeMovie.original_title}
+          date={this.props.activeMovie.release_date}
           desc={this.props.activeMovie.overview}
-          action={this.props.closeModal}       
+          action={this.props.closeModal}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     searchText: state.searchText,
     modalState: state.modalState,
     activeMovie: state.activeMovie,
-    movies: state.movies,
+    movies: state.movies
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return { 
-    fetch: (page) => dispatch(fetchMovies(page)),
-    openModal: (id) => dispatch(openModal(id)),
-    closeModal: () => dispatch(closeModal()),
+const mapDispatchToProps = dispatch => {
+  return {
+    fetch: page => dispatch(fetchMovies(page)),
+    openModal: id => dispatch(openModal(id)),
+    closeModal: () => dispatch(closeModal())
   };
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,17 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Search } from "../assets/styled";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { search } from "../actions/movieAction";
 
 const HeaderWrapper = styled.header`
-  padding: 0 100px;
+  padding: 15px 50px;
   background-color: ${props => props.theme.Secondary};
 `;
 const Wrapper = styled.div`
   text-align: ${props => (props.right ? "right" : "left")};
-  margin: 15px 0;
   width: 50%;
   display: inline-block;
 `;
@@ -32,9 +30,19 @@ class Header extends React.Component {
     return (
       <HeaderWrapper>
         <Wrapper>
-          <Link to="/">
-            <SiteName>Movies Library</SiteName>
-          </Link>
+          <SiteName>Movies Library</SiteName>
+          <span>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://bassemmohamed.me/"
+            >
+              Build by Bassem{" "}
+              <span role="img" aria-label="emoji">
+                ❤️
+              </span>
+            </a>
+          </span>
         </Wrapper>
         <Wrapper right>
           <Search
