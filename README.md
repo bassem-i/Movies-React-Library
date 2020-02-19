@@ -2,10 +2,10 @@
 
 <!--- These are examples. See https://shields.io --->
 ![GitHub repo size](https://img.shields.io/github/repo-size/bassemmohamed/Movies-React-Library)
-![GitHub contributors](https://img.shields.io/github/contributors/bassemmohamed/Movies-React-Library)
-![GitHub stars](https://img.shields.io/github/stars/bassemmohamed/Movies-React-Library?style=social)
-![GitHub forks](https://img.shields.io/github/forks/bassemmohamed/Movies-React-Library?style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/bassemmohamed94?style=social)
+[![GitHub contributors](https://img.shields.io/github/contributors/bassemmohamed/Movies-React-Library)](https://github.com/BassemMohamed/Movies-React-Library/graphs/contributors)
+[![GitHub stars](https://img.shields.io/github/stars/bassemmohamed/Movies-React-Library?style=social)](https://github.com/BassemMohamed/Movies-React-Library/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/bassemmohamed/Movies-React-Library?style=social)](https://github.com/BassemMohamed/Movies-React-Library/network/members)
+[![Twitter Follow](https://img.shields.io/twitter/follow/bassemmohamed94?style=social)](https://twitter.com/BassemMohamed94)
 
 Project name is a Movies React Library that displays list of movies coming from themoviedb.org. It is also live at https://movies-react-library.netlify.com/ using [Netlify](https://www.netlify.com).
 
